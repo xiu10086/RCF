@@ -11,7 +11,7 @@ To verify the effectiveness of our method, we provide the model trained on the O
 
 ### Dataset
 
-Download the dataset Office-Home (https://drive.google.com/file/d/0B81rNlvomiwed0V1YUxQdC1uOTg/view?resourcekey=0-2SNWq0CDAuWOBRRBL7ZZsw)
+Download the dataset Office-Home （https://pan.baidu.com/s/15NzPj74XMDG0fLbyvgkYjA?pwd=ehgi  ,Extract code:ehgi)
 
 Data Folder structure: 
 ```
