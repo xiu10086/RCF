@@ -1,0 +1,121 @@
+{
+  "fix_seed": true,
+  "train": true,
+  "fix_bn": true,
+  "multi_gpu": true,
+  "model": "res50",
+  "init_weight": "None",
+  "pretrained": true,
+  "extra": false,
+  "bottleneck": true,
+  "setting": "osda",
+  "transfer_all": false,
+  "trainer": "dcc",
+  "version": 1,
+  "lr": 0.001,
+  "momentum": 0.9, 
+  "weight_decay": 0.0005,
+  "power": 0.75 ,
+  "gamma": 10,
+  "num_steps": 10000,
+  "stop_steps": 3000 ,
+  "warmup": true,
+  "warmup_steps": 400,
+  "stage_size": 200,
+
+  "num_workers": 4,
+  "batch_size": 36,
+  "num_pclass": 6,
+  "num_sample": 6,
+  "task": "officehome",
+  "source": "Clipart", 
+  "target": "Product",
+  
+  "k_converge": true,
+  "interval": 5 ,
+  "max_search": 5,
+  "drop_stop": true,
+  "drop": 4,
+  "drop_con": true,
+  "search_stop": true,
+  
+  "pcl_alpha":10,
+  "CDI":false,
+  "CDI_pro":false,
+  "spice_and_t2s":false,
+  "t_cls":true,
+  "f_score":1,
+  "origin_dcs":false,
+  "num_neighbor":20,
+  "ratio_confident":0.6,
+  "ssl_threshold":0.6,
+  "del_other_sample":true,
+  "kandspice":true,
+  "osda_numclass":25,
+  "osda_set":true,
+  "mix_feat": true,
+
+
+  "t": 0.1,
+  "lamb": 0.1,  
+  "gm": 3 ,
+  "prior": false,
+  
+  "note": "validation",
+  "snapshot": "./snapshot",
+  
+  
+  "tensorboard": false,
+  "screen": false,
+  "neptune": false,
+  "log": "./log",
+  "val_freq": 100,
+  "save_freq": 1000,
+  "print_freq": 100,
+  
+  "root": {
+          "office": "/data/DA_data/Office", 
+          "officehome": "/data/DA_data/OfficeHome"
+          },
+
+
+  "seed": 1337,
+  "exp_base": "./exps",
+  "exp_name": "officehome",
+  "exp_id": "Art->Clipart:p03",
+  "data_params": {
+    "name": "officehome",
+    "source": "Art",
+    "target": "Clipart",
+    "fewshot": "p03",
+    "aug": "aug_0"
+  },
+  "num_epochs": 500,
+  "steps_epoch": null,
+  "optim_params": {
+    "patience": 4,
+    "batch_size_lbd": 32,
+    "batch_size": 32,
+    "decay": true,
+    "weight_decay": 5e-4,
+    "cls_update": true
+  },
+  "model_params": {
+    "out_dim": 256,
+    "version": "pretrain-resnet50",
+    "load_weight": "src-tgt",
+    "load_weight_thres": 30,
+    "load_weight_epoch": 5
+  },
+  "loss_params": {
+    "clus": {
+      "kmeans_freq": 1,
+      "type": ["each"],
+      "n_k": 25,
+      "k": [25,65, 65,130]
+    }
+  },
+
+  "loss_weight":"[1,0,1]"
+
+}
