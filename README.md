@@ -11,7 +11,7 @@ To verify the effectiveness of our method, we provide the model trained on the O
 
 ### Dataset
 
-Download the dataset Office-Home （https://pan.baidu.com/s/15NzPj74XMDG0fLbyvgkYjA?pwd=ehgi  ,Extract code:ehgi)
+Download the dataset Office-Home:（https://pan.baidu.com/s/15NzPj74XMDG0fLbyvgkYjA?pwd=ehgi  ,Extract code:ehgi)
 
 Data Folder structure: 
 ```
@@ -68,4 +68,5 @@ CUDA_VISIBLE_DEVICES=2,3 python officehome_validation.py note=validation multi_g
 ```
 
 The final results  will be saved in the './snapshot/validation/result.txt. '
+
 
