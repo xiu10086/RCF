@@ -1,17 +1,18 @@
-### Explanation
-To verify the effectiveness of our method, we provide the model trained on the Office-Home dataset along with the associated verification code. And we will release all source code if the paper is accepted.
-### Environment
+# Explanation
+To verify the effectiveness of our method, we provide the model trained on the Office-Home and Office31 datasets along with the associated verification code. And we will release all source code if the paper is accepted.
+# Environment
 - Python 3.6
 - cuda9.2 + cudnn7.6.3
 - GPU: two GeForce GTX 1080 Ti 
 - pytorch 1.7.0
 
-### Requirements
+# Requirements
     conda install --yes --file requirements.txt
 
-### Dataset
+# Dataset
 
 Download the dataset Office-Home:（https://pan.baidu.com/s/15NzPj74XMDG0fLbyvgkYjA?pwd=ehgi  ,Extract code:ehgi)
+Download the dataset Office31:（https://pan.baidu.com/s/1RWiluvan05EDjrkbayzmMQ?pwd=fwan   ,Extract code:fwan )
 
 Data Folder structure: 
 ```
@@ -21,11 +22,13 @@ Your dataset DIR:
 | |-Product
 | |-...
 ```
-You need to modify 'root' in the config file './config/oh_pcs.json'
+You need to modify 'root' in the config file './config/oh_pcs.json'.
+
 You need to move the pretrained model to './model_weights/'
 
-## Validation
+# Validation
 office-home model weights download: （https://pan.baidu.com/s/1vbMSYXMlJAbWJMuwrxNsrA?pwd=u4d3 ,Extract code:u4d3)
+
 Validation on Office-Home: 
 
 ```
@@ -66,6 +69,33 @@ A->R
 CUDA_VISIBLE_DEVICES=2,3 python officehome_validation.py note=validation multi_gpu=1 source=Art target=RealWorld init_weight='./model_weights/Ar_Rw.pth' 
 
 ```
+
+office31 model weights download: （https://pan.baidu.com/s/1OTjyjSOsgJHFihCPskW5bQ?pwd=05ed ,Extract code:05ed )
+
+Validation on Office31:
+
+
+```
+A->W
+CUDA_VISIBLE_DEVICES=2,3 python office_validation.py note=validation multi_gpu=1 source=amazon target=webcam init_weight='./model_weights/am_we.pth' 
+
+A->D
+CUDA_VISIBLE_DEVICES=2,3 python office_validation.py note=validation multi_gpu=1 source=amazon target=dslr init_weight='./model_weights/am_ds.pth' 
+
+W->D
+CUDA_VISIBLE_DEVICES=2,3 python office_validation.py note=validation multi_gpu=1 source=webcam target=dslr init_weight='./model_weights/we_ds.pth' 
+
+W->A
+CUDA_VISIBLE_DEVICES=2,3 python office_validation.py note=validation multi_gpu=1 source=webcam target=amazon init_weight='./model_weights/we_am.pth' 
+
+D->A
+CUDA_VISIBLE_DEVICES=2,3 python office_validation.py note=validation multi_gpu=1 source=dslr target=amazon init_weight='./model_weights/ds_am.pth' 
+
+D->W
+CUDA_VISIBLE_DEVICES=2,3 python office_validation.py note=validation multi_gpu=1 source=dslr target=webcam init_weight='./model_weights/ds_we.pth' 
+
+```
+
 
 The final results  will be saved in the './snapshot/validation/result.txt. '
 

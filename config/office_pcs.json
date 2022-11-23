@@ -1,0 +1,151 @@
+{
+  "fix_seed": true,
+  "train": true,
+  "fix_bn": true,
+  "multi_gpu": true,
+  "model": "res50",
+  "init_weight": "None",
+  "pretrained": true,
+  "extra": false,
+  "bottleneck": true,
+
+  "setting": "uda",
+  "transfer_all": false,
+  "trainer": "dcc",
+  "version": 1,
+
+  "lr": 0.001,
+  "momentum": 0.9, 
+  "weight_decay": 0.0005,
+  "power": 0.75 ,
+  "gamma": 10,
+  "num_steps": 10000,
+  "stop_steps": 3000 ,
+  "warmup": true,
+  "warmup_steps": 400,
+  "stage_size": 200,
+
+  "num_workers": 4,
+  "batch_size": 36,
+  "num_pclass": 3,
+  "num_sample": 10,
+  "task": "office",
+  "source": "dslr", 
+  "target": "amazon",
+  
+  "k_converge": true,
+  "interval": 2 ,
+  "max_search": 3,
+  "drop_stop": true,
+  "drop": 4,
+  "drop_con": true,
+  "search_stop": true,
+  
+  "pcl_alpha":10,
+  "CDI":false,
+  "t_cls":true,
+  "f_score":1,
+  "num_neighbor":20,
+  "ratio_confident":0.6,
+  "ssl_threshold":0.6,
+  "del_other_sample":true,
+  "kandspice":true,
+  "osda_numclass":10,
+  "osda_set":true,
+  "mix_feat": true,
+
+  "t": 0.1,
+  "lamb": 0.1,  
+  "gm": 3 ,
+  "prior": false,
+  
+  "note": "train",
+  "snapshot": "./snapshot",
+  
+  
+  "tensorboard": false,
+  "screen": false,
+  "neptune": false,
+  "log": "./log",
+  "val_freq": 100,
+  "save_freq": 1000,
+  "print_freq": 100,
+  
+  "root": {
+          "office": "/data/hy/zx/DA_data/Office", 
+          "officehome": "/data/hy/zx/DA_data/OfficeHome"
+          },
+
+
+  "seed": 1337,
+  "exp_base": "./exps",
+  "exp_name": "office",
+  "exp_id": "amazon->dslr",
+  "agent": "CDSAgent",
+  "data_params": {
+    "name": "office",
+    "source": "amazon",
+    "target": "dslr",
+    "fewshot": "3",
+    "aug": "aug_0"
+  },
+  "num_epochs": 500,
+  "steps_epoch": null,
+  "optim_params": {
+    "learning_rate": 0.001,
+    "conv_lr_ratio": 0.1,
+    "patience": 4,
+    "batch_size_lbd": 36,
+    "batch_size": 36,
+    "decay": true,
+    "weight_decay": 5e-4,
+    "cls_update": true
+  },
+  "model_params": {
+    "out_dim": 256,
+    "version": "pretrain-resnet50",
+    "load_weight": "src-tgt",
+    "load_weight_thres": 30,
+    "load_weight_epoch": 5
+  },
+  "loss_params": {
+    "thres_src": 0.95,
+    "thres_tgt": 0.98,
+    "temp": 0.1,
+    "loss": [
+      "cls-so",
+      "proto-src",
+      "proto-tgt"
+    ],
+    "weight": [1, 0,0.5],
+    "clus": {
+      "kmeans_freq": 1,
+      "type": ["each"],
+      "n_k": 10,
+      "k": [25,65, 65,130]
+    }
+  },
+
+  
+  "loss_weight":"[1,0,1]",
+
+  "vit_set":{
+    "MODEL":{
+      "PRETRAIN_CHOICE": "imagenet",
+      "PRETRAIN_PATH": "model/deit_small_distilled_patch16_224-649709d9.pth",
+      "METRIC_LOSS_TYPE": "triplet'",
+      "IF_LABELSMOOTH": "off",
+      "IF_WITH_CENTER": "no",
+      "NAME": "transformer",
+      "NO_MARGIN": true,
+      "Transformer_TYPE": "uda_vit_small_patch16_224_TransReID" ,
+      "STRIDE_SIZE": [16, 16],
+      "BLOCK_PATTERN": "3_branches",
+      "TASK_TYPE": "classify_DA",
+      "UDA_STAGE": "UDA"
+    },
+    "INPUT":{
+      "SIZE_CROP": [224, 224]
+    }
+  }
+}
