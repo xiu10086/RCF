@@ -21,6 +21,8 @@ Your dataset DIR:
 | |-Art
 | |-Product
 | |-...
+|-Office
+| |-...
 ```
 You need to modify 'root' in the config file './config/oh_pcs.json'.
 
