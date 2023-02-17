@@ -1,5 +1,5 @@
 # Explanation
-To verify the effectiveness of our method, we provide the model trained on the Office-Home and Office31 datasets along with the associated verification code. And we will release all source code if the paper is accepted.
+To verify the effectiveness of our method, we provide the model trained on the Office-Home and Office31 datasets along with the associated verification code. 
 # Environment
 - Python 3.6
 - cuda9.2 + cudnn7.6.3
