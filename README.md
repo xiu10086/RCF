@@ -1,3 +1,5 @@
+# RELIABLE CLUSTER-BASED FRAMEWORK FOR OPEN SET DOMAIN ADAPTATION
+![image](result_217.png)
 # Explanation
 To verify the effectiveness of our method, we provide the model trained on the Office-Home and Office31 datasets along with the associated verification code. 
 # Environment
